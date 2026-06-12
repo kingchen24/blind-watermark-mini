@@ -9,6 +9,7 @@ blind-watermark-mini — 快速运行入口
     python run.py 3                        # 只运行场景3（鲁棒性测试）
     python run.py 4                        # 只运行场景4（密码验证）
     python run.py 5                        # 只运行场景5（底层API）
+    python run.py visualize               # 生成可视化实例图片
 
 快速命令行:
     # 嵌入文本水印
@@ -50,6 +51,12 @@ def main():
         name, fn = SCENE_MAP[sys.argv[1]]
         print(f"\n>>> 运行场景 {sys.argv[1]}: {name}")
         fn()
+        return
+
+    # 可视化模式
+    if sys.argv[1] == "visualize":
+        from visualize import main as vis_main
+        vis_main()
         return
 
     # 命令行模式
